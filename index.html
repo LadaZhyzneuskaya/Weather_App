@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/owfont-regular.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <title>Your weather</title>
+</head>
+
+<body>
+  <div class="weather-application">
+    <div class="container-general">
+      <div class="container-forecast">
+        <header class="header">
+          <h1 class="header__title">
+            Your weather
+          </h1>
+        </header>
+  
+        <main class="main">
+          <div class="main__title">
+            <p class="main__title_date">
+              <span class="day"></span>
+
+              <span class="date"></span>
+            </p>
+
+            <p class="main__title_time"></p>
+
+            <h2 class="main__title_location"></h2>
+          </div>
+
+          <div class="main__weather">
+            <div class="main__weather_now">
+              <div class="main__weather_now_icon">
+                <img src="/icons/unknown.png" alt="weather" class="icon">
+              </div>
+  
+              <div class="main__weather_now_characteristic now">
+                <div class="now_temperature">
+                  <span class="now_temperature_number"></span><span class="now_temperature_units">&deg;</span>
+                </div>
+  
+                <div class="now_feels-like">
+                  <span class="now_feels-like_text">
+                    Feels like
+                  </span>
+  
+                  <span class="now_feels-like_number">20</span><span class="now_feels-like_units">&deg;</span>
+                </div>
+  
+                <div class="now_description">
+                  <p class="now_description_text">Mostly sunny</p>
+                </div>
+              </div>
+            </div>
+  
+            <div class="main__weather_now_other-characteristic weather-other">
+              <div class="weather-other_temperature weather-other--flex">
+                <div class="weather-other_temperature_high">
+                  <span class="weather-other_temperature_high_number weather-other--font-size">23</span><span class="weather-other_temperature_high_units weather-other--font-size">&deg;</span>
+                  
+                  <p class="weather-other_temperature_high_text">
+                    High
+                  </p>
+                </div>
+  
+                <div class="weather-other_temperature_low">
+                  <span class="weather-other_temperature_low_number weather-other--font-size">14</span><span class="weather-other_temperature_low_units weather-other--font-size">&deg;</span>
+
+                  <p class="weather-other_temperature_low_text">
+                    Low
+                  </p>
+                </div>
+              </div>
+  
+              <div class="weather-other_some-data weather-other--flex">
+                <div class="weather-other_some-data_wind wind">
+                  <span class="wind_number weather-other--font-size">1</span><span class="wind_units weather-other--font-size">mps</span>
+
+                  <p class="wind_text">
+                    Wind
+                  </p>
+                </div>
+    
+                <div class="weather-other_some-data_humidity humidity">
+                  <span class="humidity_number weather-other--font-size">50</span><span class="humidity_units weather-other--font-size">%</span>
+
+                  <p class="humidity_text">
+                    Humidity
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="main__weather_detailed">
+            <div class="main__weather_detailed_titles">
+              <button type="button" class="main__weather_detailed_titles_today">
+                Todays weather
+              </button>
+
+              <button type="button" class="main__weather_detailed_titles_next-days">
+                Next five days
+              </button>
+            </div>
+
+            <div class="main__weather_detailed_forecast">
+              <div class="main__weather_detailed_forecast_three-hours hourly">
+              </div>
+            </div>
+          </div>
+        </main>
+  
+        <footer class="footer">
+          <p class="footer__text">
+            Create with &#10084; by Lada Zhyzneuskaya
+          </p>
+        </footer>
+      </div>
+
+      <div class="container-search">
+        <form action="#" class="container-search__form">
+          <input type="text" class="container-search__form_input" placeholder="Search city">
+
+          <button type="submit" class="container-search__form_button">&#128270;</button>
+        </form>
+
+        <ul class="container-search__results-of-search">
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/dom.js"></script>
+  <script src="/js/weather_cards.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/ST_PG_IN_WORKING.js"></script>
+  <!-- <script src="/js/start_page.js"></script> -->
+  <script src="/js/storage.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>
