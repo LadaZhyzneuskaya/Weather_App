@@ -312,6 +312,8 @@
 }
 
 .container-search {
+  display: flex;
+  flex-direction: column;
   background: rgba(110, 110, 110, 0.25);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -368,4 +370,12 @@
 
 .item_close-button_icon {
   height: 15px;
+}
+
+.container-search__clear-storage-button {
+  /* width: 120px; */
+  height: 20px;
+  margin-top: 15px;
+  border: none;
+  background-color: rgba(204, 204, 204, 0.540);
 }

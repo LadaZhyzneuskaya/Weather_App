@@ -5,7 +5,7 @@ function threeHoursWeatherCards() {
   const newArray = [...threeHoursWeatherArray].splice(0, 10);
   // threeHoursWeatherArray.length = 10;
   const cardsThreeHours = newArray.map(createThreeHoursWeatherCards);
-  console.log(newArray);
+  // console.log(newArray);
   replaceChildren(weatherContainer, cardsThreeHours);
 }
 
@@ -19,7 +19,7 @@ function fiveDaysWeatherCards() {
   });
 
   const cardsFiveDays = newArray.map(createFiveDaysWeatherCards);
-  console.log(fiveDaysWeatherArray);
+  // console.log(fiveDaysWeatherArray);
   replaceChildren(weatherContainer, cardsFiveDays);
 
   return newArray;

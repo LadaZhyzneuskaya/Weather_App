@@ -3,7 +3,9 @@ const inputElement = document.querySelector('input');
 const buttonInputElement = document.querySelector('.container-search__form_button');
 const searchListElement = document.querySelector('.container-search__results-of-search');
 
-// console.log();
+const clearStorageButton = document.querySelector('.container-search__clear-storage-button');
+
+// console.log(itemInSearchList);
 
 const titleCityElement = document.querySelector('.main__title_location');
 const dayTodayElement = document.querySelector('.day');
@@ -176,6 +178,7 @@ function createSearchItems(cityName) {
   const itemsContainer = createCard({
     tag: 'li',
     classList: ['container-search__results-of-search_item', 'item'],
+    attributes: [{prop: 'data-name', value: `${cityName}`}],
     children: [searchItem, closeButtonContainer],
     childrenAction: 'append',
   });

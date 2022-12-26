@@ -18,19 +18,21 @@ function addElementsToPage (data) {
   getWind(data);
   getHumidity(data);
   getIcon(data.list[0], weatherIconNowElement);
-}
+};
 
 // ================ SEARCH ================
+
+searchArray.forEach(city => {
+  createSearchItems(city);
+});
 
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const inputValue = inputElement.value;
-
   getData(inputValue);
 
-  citiesArray.push(inputValue);
-  setDataInStorage(inputValue);
+  checkTheSameItem(inputValue);
 
   inputElement.value = '';
 });

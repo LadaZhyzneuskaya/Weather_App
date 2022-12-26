@@ -1,25 +1,44 @@
-const citiesArray = [];
-let cities = [];
+let citiesArray = localStorage.getItem('cities') ? JSON.parse(localStorage.getItem('cities')) : [];
+setDataInStorage();
+const searchArray = JSON.parse(localStorage.getItem('cities'));
 
-function setDataInStorage(cityName) {
+searchArray.forEach(city => {
+  const searchItem = createSearchItems(city);
+  searchListElement.append(searchItem);
+});
+
+function checkTheSameItem(inputValue) {
+  // console.log('citiesArray', citiesArray);
+
+  if(inputValue === '') {
+    alert('Please, enter city name!');
+    return;
+  }
+
+  if(!citiesArray.includes(`${inputValue}`)) {
+    citiesArray.push(inputValue);
+    setDataInStorage();
+
+    if (localStorage.getItem('cities')) {
+      const searchItem = createSearchItems(inputValue);
+      searchListElement.append(searchItem);
+    }
+
+  } else {
+    console.log('DONT', citiesArray);
+    return;
+  }
+}
+
+function setDataInStorage() {
   localStorage.setItem('cities', JSON.stringify(citiesArray));
-  const cities = JSON.parse(localStorage.getItem('cities'));
-
-  addSearchItemsToPage(cities);
-  console.log('STORAGE!', cities);
 }
 
-function addSearchItemsToPage(cities) {
-cities.forEach(city => {
-    const searchItems = createSearchItems(city);
-    searchListElement.append(searchItems);
-  });
-}
+clearStorageButton.addEventListener('click', () => {
+  localStorage.clear();
+  citiesArray = [];
 
-if (localStorage.getItem('cities')) {
-  cities = JSON.parse(localStorage.getItem('cities'));
-  addSearchItemsToPage(cities);
-  console.log('IF!', cities);
-} else {
-  cities = [];
-}
+  while (searchListElement.firstChild) {
+    searchListElement.removeChild(searchListElement.firstChild);
+  };
+});
