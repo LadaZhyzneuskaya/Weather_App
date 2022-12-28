@@ -3,10 +3,11 @@ const inputElement = document.querySelector('input');
 const buttonInputElement = document.querySelector('.container-search__form_button');
 const searchContainer = document.querySelector('.container-search');
 const searchListElement = document.querySelector('.container-search__results-of-search');
+const messageElement = document.querySelector('.container-search__message');
 
 const clearStorageButton = document.querySelector('.container-search__clear-storage-button');
 
-console.log(searchContainer);
+// console.log(hintElement);
 
 const titleCityElement = document.querySelector('.main__title_location');
 const dayTodayElement = document.querySelector('.day');
@@ -188,5 +189,3 @@ function createSearchItems(cityName) {
 
   return itemsContainer;
 }
-
-// =============== Create hint about search error ===============

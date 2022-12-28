@@ -44,8 +44,9 @@ function toggleClearStorageButtonStatus() {
 
 let hint;
 
-function showError() {
-  hint = create;
+function showMessage() {
+  console.log(messageElement)
+  messageElement.classList.remove('container-search__message--turn-opacity');
 }
 
 // =============== STORAGE ===============
@@ -54,7 +55,7 @@ function checkTheSameItem(inputValue) {
   // console.log('citiesArray', citiesArray);
 
   if(inputValue === '') {
-    alert('Please, enter city name!');
+    showError();
     return;
   }
 

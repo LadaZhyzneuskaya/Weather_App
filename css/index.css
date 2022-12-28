@@ -317,12 +317,36 @@
   background: rgba(110, 110, 110, 0.25);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.container-search__message {
+  width: auto;
+  height: 40px;
+  padding: 10px;
+  background-color: #ccc;
+  border: 1px solid orangered;
+  border-radius: 10px;
+  color: black;
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  left: -230px;
+}
+
+.container-search__message--turn-opacity {
+  opacity: 0;
+  transition: 1s;
+}
+
+.container-search__message_text {
+
 }
 
 .container-search__form {
   display: flex;
   justify-content: space-around;
-  padding: 20px 25px 10px 10px;
+  padding: 15px 25px 10px 10px;
 }
 
 .container-search__form_input {
@@ -352,7 +376,6 @@
   width: 30px;
   height: 30px; 
   box-sizing: border-box;
-  /* background-color: none; */
   border: 5px solid rgb(200, 200, 200);
   border-radius: 50%;
 }
