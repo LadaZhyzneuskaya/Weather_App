@@ -23,13 +23,6 @@ function fiveDaysWeatherCards() {
   replaceChildren(weatherContainer, cardsFiveDays);
 
   return newArray;
-  // for (let i = 1; i < fiveDaysWeatherArray.length; i = i + 8) {
-  //   // cardsFiveDays = fiveDaysWeatherArray.map(createFiveDaysWeatherCards);
-  //   cardsFiveDays = fiveDaysWeatherArray.map((element) => {
-
-  //   });
-  // }
-  // replaceChildren(fiveDaysWeatherContainer, cardsFiveDays);
 }
 
 function replaceChildren(parent, children) {

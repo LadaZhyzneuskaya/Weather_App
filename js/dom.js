@@ -1,11 +1,12 @@
 const formElement = document.querySelector('form');
 const inputElement = document.querySelector('input');
 const buttonInputElement = document.querySelector('.container-search__form_button');
+const searchContainer = document.querySelector('.container-search');
 const searchListElement = document.querySelector('.container-search__results-of-search');
 
 const clearStorageButton = document.querySelector('.container-search__clear-storage-button');
 
-// console.log(itemInSearchList);
+console.log(searchContainer);
 
 const titleCityElement = document.querySelector('.main__title_location');
 const dayTodayElement = document.querySelector('.day');
@@ -162,14 +163,16 @@ function createSearchItems(cityName) {
   });
 
   const closeButtonImage =createCard({
-    tag: 'img',
+    tag: 'p',
     classList: ['item_close-button_icon'],
-    attributes: [{prop: 'src', value: '/icons/close-button.png'}, {prop: 'alt', value: 'close-icon'}],
+    // attributes: [{prop: 'src', value: '/icons/close-button.png'}, {prop: 'alt', value: 'close-icon'}],
+    textContent: '✖',
   });
 
   const closeButtonContainer = createCard({
     tag: 'button',
     classList: ['item_close-button'],
+    // textContent: '✖',
     attributes: [{prop: 'type', value: 'button'}],
     children: [closeButtonImage],
     childrenAction: 'append',
@@ -185,3 +188,5 @@ function createSearchItems(cityName) {
 
   return itemsContainer;
 }
+
+// =============== Create hint about search error ===============

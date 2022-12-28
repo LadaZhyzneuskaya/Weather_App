@@ -145,7 +145,6 @@ function getIcon(data, element) {
     case 'Clear':
       return element.src = '/icons/day_clear.png';
 
-    
     case 'Snow':
       return element.src = '/icons/snow.png';
 

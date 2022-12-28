@@ -347,13 +347,18 @@
 }
 
 .container-search__results-of-search_item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  list-style: none;
 }
 
 .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  list-style: none;
+  border-bottom: 1px dotted rgba(204, 204, 204, 0.363);
+}
+
+.item:hover {
+  background-color: rgba(204, 204, 204, 0.185);
 }
 
 .item_location {
@@ -365,11 +370,19 @@
 }
 
 .item_close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
+  background: none;
+  width: 25px;
+  height: 25px;
 }
 
 .item_close-button_icon {
-  height: 15px;
+  color: #ccc;
+  width: 25px;
+  height: 25px;
 }
 
 .container-search__clear-storage-button {

@@ -5,6 +5,11 @@ async function getData(inputValue = 'Minsk') {
     const data = await response.json();
     console.log('DATA', data);
 
+    console.log(response.status);
+    if (response.status !== 200) {
+      showError();
+    }
+
     showMainPageWeather(data);
     
   } catch (error) {

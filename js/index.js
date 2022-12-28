@@ -20,6 +20,8 @@ function addElementsToPage (data) {
   getIcon(data.list[0], weatherIconNowElement);
 };
 
+toggleClearStorageButtonStatus();
+
 // ================ SEARCH ================
 
 searchArray.forEach(city => {
@@ -31,8 +33,8 @@ formElement.addEventListener('submit', (event) => {
 
   const inputValue = inputElement.value;
   getData(inputValue);
-
   checkTheSameItem(inputValue);
+  toggleClearStorageButtonStatus();
 
   inputElement.value = '';
 });
