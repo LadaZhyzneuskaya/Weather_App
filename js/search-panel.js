@@ -64,24 +64,23 @@ function checkItem(inputValue) {
   }
 
   if(citiesArray.length < 10 && !citiesArray.includes(`${inputValue}`)) {
-    citiesArray.push(inputValue);
+    citiesArray.unshift(inputValue);
     setDataInStorage();
     console.log('<5', citiesArray);
 
     if (localStorage.getItem('cities')) {
       const searchItem = createSearchItems(inputValue);
-      searchListElement.append(searchItem);
+      searchListElement.prepend(searchItem);
     }
 
-  } else if (citiesArray.length > 10 && !citiesArray.includes(`${inputValue}`)) {
-    citiesArray.shift();
-    citiesArray.push(inputValue);
+  } else if (citiesArray.length >= 10 && !citiesArray.includes(`${inputValue}`)) {
+    console.log('HI', citiesArray, searchArray);
+    citiesArray.pop();
+    citiesArray.unshift(inputValue);
     setDataInStorage();
 
     searchArray = JSON.parse(localStorage.getItem('cities'));
-
     const searchListChildren = searchArray.map(createSearchItems);
-
     replaceChildren(searchListElement, searchListChildren);
     
     console.log('DONT', citiesArray, searchArray);
