@@ -24,17 +24,21 @@ toggleClearStorageButtonStatus();
 
 // ================ SEARCH ================
 
-searchArray.forEach(city => {
-  createSearchItems(city);
-});
+// searchArray.forEach(city => {
+//   createSearchItems(city);
+//   console.log('only create')
+// });
 
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const inputValue = inputElement.value;
   getData(inputValue);
-  checkTheSameItem(inputValue);
+  checkItem(inputValue);
   toggleClearStorageButtonStatus();
+  // addSearchItemsToPage();
+  
+  console.log('formElement', searchArray);
 
   inputElement.value = '';
 });

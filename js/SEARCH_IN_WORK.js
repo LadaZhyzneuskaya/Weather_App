@@ -2,6 +2,7 @@ let citiesArray = localStorage.getItem('cities') ? JSON.parse(localStorage.getIt
 setDataInStorage();
 let searchArray = JSON.parse(localStorage.getItem('cities'));
 
+// if(true) {}
 searchArray.forEach(city => {
   const searchItem = createSearchItems(city);
   searchListElement.append(searchItem);
@@ -73,7 +74,7 @@ function checkItem(inputValue) {
       searchListElement.append(searchItem);
     }
 
-  } else if (citiesArray.length > 10 && !citiesArray.includes(`${inputValue}`)) {
+  } else {
     citiesArray.shift();
     citiesArray.push(inputValue);
     setDataInStorage();
@@ -85,9 +86,6 @@ function checkItem(inputValue) {
     replaceChildren(searchListElement, searchListChildren);
     
     console.log('DONT', citiesArray, searchArray);
-    
-  } else {
-    console.log('You shall not pass, Povtoriashka!!! :)');
     return;
   }
 }
