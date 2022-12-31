@@ -99,7 +99,6 @@ function getIcon(data, element) {
   switch (data.weather[0].main) {
     case 'Clear':
       return element.src = '/icons/day_clear.png';
-
     
     case 'Snow':
       return element.src = '/icons/snow.png';
@@ -130,6 +129,7 @@ function getIcon(data, element) {
 }
 
 function getCardsIcon(data) {
+  console.log('ICONS data', data)
   switch (data.weather[0].main) {
     case 'Clear':
       return '/icons/day_clear.png';
@@ -162,37 +162,3 @@ function getCardsIcon(data) {
       '/icons/unknown.png';
   }
 }
-
-function getCardsFiveDaysIcon(description) {
-  switch (description) {
-    case 'Clear':
-      return '/icons/day_clear.png';
-
-    
-    case 'Snow':
-      return '/icons/snow.png';
-
-    case 'Mist':
-      return '/icons/mist.png';
-
-    case 'Thunderstorm':
-      return '/icons/thunderstorm.png';
-
-    case 'Rain':
-      if (description === 'light rain') {
-        return '/icons/light_rain.png';
-      } else {
-        return '/icons/moderate_rain.png';
-      }
-
-    case 'Clouds':
-      if (description === 'overcast clouds') {
-        return '/icons/overcast_clouds.png';
-      } else {
-        return '/icons/day_few_clouds.png';
-      }
-
-    default:
-      '/icons/unknown.png';
-  }
-} 

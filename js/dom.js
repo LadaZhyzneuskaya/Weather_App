@@ -154,17 +154,16 @@ function createThreeHoursWeatherCards(data) {
 //   return cardContainer;
 // }
 
-function createFiveDaysWeatherCards(array) {
-    const description = array.description;
-    // console.log('AWAUT description', description)
+function createFiveDaysWeatherCards(fiveDaysArray) {
+    console.log('AWAUT description', fiveDaysArray)
 
-    const imageSrc = getCardsFiveDaysIcon(description);
-    // console.log('imageSrc', imageSrc)
+    const imageSrc = getCardsIcon(fiveDaysArray);
+    console.log('imageSrc', imageSrc)
   
     const dateItem = createCard({
       tag: 'p',
       classList: ['five-days_date'],
-      textContent: array.date,
+      textContent: fiveDaysArray.date,
     });
   
     const imageItem = createCard({
@@ -176,13 +175,13 @@ function createFiveDaysWeatherCards(array) {
     const dayTemperatureItem = createCard({
       tag: 'p',
       classList: ['five-days_day-temperature'],
-      textContent: `${Math.round(array.max_temp).toString()}°`,
+      textContent: `${Math.round(fiveDaysArray.max_temp).toString()}°`,
     });
   
     const nightTemperatureItem = createCard({
       tag: 'p',
       classList: ['five-days_night-temperature'],
-      textContent: `${Math.round(array.min_temp).toString()}°`,
+      textContent: `${Math.round(fiveDaysArray.min_temp).toString()}°`,
     });
   
     const cardContainer = createCard({

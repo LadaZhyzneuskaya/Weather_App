@@ -2,6 +2,7 @@ let threeHoursWeatherArray = [];
 let fiveDaysWeatherArray = [];
 let fiveDaysGeneralTemperature = [];
 let weatherDescription = [];
+let weatherMainDescription = [];
 let datesArray = [];
 let descriptionOfDay;
 let dataArrayFiveDaysWeather = [];
@@ -110,6 +111,7 @@ function filteredData(data) {
 
       fiveDaysGeneralTemperature = [];
       weatherDescription = [];
+      weatherMainDescription = [];
       datesArray = [];
 
       oneDayData.forEach((element) => {
@@ -119,21 +121,23 @@ function filteredData(data) {
           return a - b;
         });
 
-        weatherDescription.push(element.weather[0].main);
+        weatherDescription.push(element.weather[0].description);
+        weatherMainDescription.push(element.weather[0].main);
         datesArray.push(element.dt_txt
           .split(' ')[0]
           .slice(8));
 
         // console.log('fiveDaysGeneralTemperature', fiveDaysGeneralTemperature);
-        // console.log('weatherDescription', weatherDescription);
+        console.log('weatherDescription', weatherDescription);
+        console.log('weatherMainDescription', weatherMainDescription);
       });
     }
     transformFiveDaysTemperatureArray();
 
-
-    function sortWeatherDescriptions() {
+    function sortWeatherDescriptions(descriptionArray) {
       const resultOfSort = {};
-      weatherDescription.forEach((descr) => {
+      console.log('weatherMainDescription', descriptionArray)
+      descriptionArray.forEach((descr) => {
         // console.log('elem-weatherDescription', descr);
 
         resultOfSort[descr] = resultOfSort[descr] + 1 || 1;
@@ -150,11 +154,36 @@ function filteredData(data) {
       // console.log('descriptionOfDay', descriptionOfDay[0]);
       return descriptionOfDay[0];
     }
-    sortWeatherDescriptions();
+
+
+    // function sortWeatherMainDescriptions() {
+    //   const resultOfMainSort = {};
+    //   console.log('weatherMainDescription', weatherMainDescription)
+    //   weatherMainDescription.forEach((descr) => {
+    //     // console.log('elem-weatherDescription', descr);
+
+    //     resultOfMainSort[descr] = resultOfMainSort[descr] + 1 || 1;
+    //     // console.log('resultOfSort', resultOfSort);
+    //   });
+    //   // console.log('resultOfWeatherDescription', resultOfWeatherDescription);
+
+    //   sortingDescriptions = Object.entries(resultOfMainSort).sort((a, b) => {
+    //     return b[1] - a[1];
+    //   });
+
+    //   descriptionOfDay = sortingDescriptions[0];
+    //   // console.log('sortingDescriptions', sortingDescriptions);
+    //   // console.log('descriptionOfDay', descriptionOfDay[0]);
+    //   return descriptionOfDay[0];
+    // }
+    // // sortWeatherDescriptions();
 
     const objectDataOneDaysWeather = {
       date: datesArray[0],
-      description: sortWeatherDescriptions(),
+      weather: [{
+        main: sortWeatherDescriptions(weatherMainDescription),
+        description: sortWeatherDescriptions(weatherDescription),
+      }],
       max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
       min_temp: fiveDaysGeneralTemperature[0],
     }
@@ -162,88 +191,22 @@ function filteredData(data) {
     dataArrayFiveDaysWeather.push(objectDataOneDaysWeather);
     fiveDaysWeatherCards(dataArrayFiveDaysWeather);
     // console.log(fiveDaysGeneralTemperature);
-    // console.log(weatherDescription);
+    // console.log(weatherMainDescription);
     // console.log(datesArray);
     // console.log(descriptionOfDay);
   }
-
-  // dataArrayFiveDaysWeather = [
-  //   {
-  //     date: datesArray[0],
-  //     max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
-  //     min_temp: fiveDaysGeneralTemperature[0],
-  //   },
-  
-  //   {
-  //     date: datesArray[1],
-  //     max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
-  //     min_temp: fiveDaysGeneralTemperature[0],
-  //   },
-  
-  //   {
-  //     date: datesArray[1],
-  //     max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
-  //     min_temp: fiveDaysGeneralTemperature[0],
-  //   },
-  
-  //   {
-  //     date: datesArray[1],
-  //     description: sortWeatherDescriptions(),
-  //     max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
-  //     min_temp: fiveDaysGeneralTemperature[0],
-  //   },
-  
-  //   {
-  //     date: datesArray[1],
-  //     max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
-  //     min_temp: fiveDaysGeneralTemperature[0],
-  //   },
-  // ];
 
   console.log('dataArrayFiveDaysWeather', dataArrayFiveDaysWeather[3]);
   
   fiveDaysWeatherCards(dataArrayFiveDaysWeather);
 }
 
-function fiveDaysWeatherCards(arr) {
-  const cardsFiveDays = arr.map((item) => {
+function fiveDaysWeatherCards(transformedDataArray) {
+  console.log('item', transformedDataArray);
+  const cardsFiveDays = transformedDataArray.map((item) => {
     // console.log('item', item);
     return createFiveDaysWeatherCards(item);
   });
   console.log('cardsFiveDays', cardsFiveDays);
   replaceChildren(weatherContainer, cardsFiveDays);
 }
-
-// console.log('objectDataFiveDaysWeather', objectDataFiveDaysWeather);
-
-// function fiveDaysWeatherCards(data) {
-//   const newArray = [...fiveDaysWeatherArray];
-//   console.log('newArray', newArray[0]); // el of array (40)
-//   console.log('newArray', newArray);
-// }
-
-
-
-
-
-
-
-// const arr = [];
-
-// const arrayData = ['03', '04', 'owl'];
-
-// const obj1 = {
-//   date: arrayData[0],
-// }
-
-// const obj2 = {
-//   date: 'oops!',
-// }
-
-// const obj3 = {
-//   date: 'abidikibidi!',
-// }
-
-// arr.push(obj1, obj2, obj3)
-// console.log('arr', arr);
-
