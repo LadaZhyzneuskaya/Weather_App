@@ -13,6 +13,8 @@ async function getData(inputValue = 'Minsk') {
     }
 
     showMainPageWeather(data);
+
+    // return data;
     
   } catch (error) {
     console.log(error);

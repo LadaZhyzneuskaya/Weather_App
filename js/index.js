@@ -34,9 +34,9 @@ formElement.addEventListener('submit', (event) => {
 
   const inputValue = inputElement.value;
   getData(inputValue);
+
   checkItem(inputValue);
   toggleClearStorageButtonStatus();
-  // addSearchItemsToPage();
   
   console.log('formElement', searchArray);
 
@@ -153,6 +153,40 @@ function getCardsIcon(data) {
 
     case 'Clouds':
       if (data.weather[0].description === 'overcast clouds') {
+        return '/icons/overcast_clouds.png';
+      } else {
+        return '/icons/day_few_clouds.png';
+      }
+
+    default:
+      '/icons/unknown.png';
+  }
+}
+
+function getCardsFiveDaysIcon(description) {
+  switch (description) {
+    case 'Clear':
+      return '/icons/day_clear.png';
+
+    
+    case 'Snow':
+      return '/icons/snow.png';
+
+    case 'Mist':
+      return '/icons/mist.png';
+
+    case 'Thunderstorm':
+      return '/icons/thunderstorm.png';
+
+    case 'Rain':
+      if (description === 'light rain') {
+        return '/icons/light_rain.png';
+      } else {
+        return '/icons/moderate_rain.png';
+      }
+
+    case 'Clouds':
+      if (description === 'overcast clouds') {
         return '/icons/overcast_clouds.png';
       } else {
         return '/icons/day_few_clouds.png';

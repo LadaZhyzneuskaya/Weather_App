@@ -4,7 +4,7 @@ const showMainPageWeather = (data) => {
   
   addElementsToPage(data);
 
-  addCardsToPage();
+  addCardsToPage(data);
 }
 
 function getTime() {
@@ -48,8 +48,24 @@ function getDateToday() {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const formattedDate = `${day}.${month + 1}.${year}`;
-  dateTodayElement.textContent = formattedDate;
+
+  if (day < 10) {
+    dateTodayElement.textContent = `0${day}.${month + 1}.${year}`;
+  };
+
+  if (month < 9) {
+    dateTodayElement.textContent = `${day}.0${month + 1}.${year}`;
+  };
+
+  if (day < 10 && month < 9) {
+    fullDayDate = `0${day}.0${month + 1}.${year}`;
+  };
+
+  if (day >= 10 && month >= 10) {
+    dateTodayElement.textContent = `${day}.${month + 1}.${year}`;
+  };
+
+  // return `${year}-${month + 1}-${day}`;
 }
 
 function getDayToday() {

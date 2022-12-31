@@ -105,54 +105,95 @@ function createThreeHoursWeatherCards(data) {
 
 // =============== Create five days weather cards ===============
 
-function createFiveDaysWeatherCards(data) {
-  function getDay(data) {
-    for (let i = 0; i < data.length; i = i + 8) {
-      return data.list[i].dt_txt;
-    }
+// function createFiveDaysWeatherCards(data) {
+//   function getDay(data) {
+//     for (let i = 0; i < data.length; i = i + 8) {
+//       return data.list[i].dt_txt;
+//     }
+//   }
+
+//   const dateItem = createCard({
+//     tag: 'p',
+//     classList: ['five-days_date'],
+//     textContent: data.dt_txt
+//       // .split(' ')[0]
+//       // .slice(8, 11),
+//   });
+
+//   const dayItem = createCard({
+//     tag: 'p',
+//     classList: ['five-days_day'],
+//     textContent: getDay(data),
+//   });
+
+//   // const imageItem = createCard({
+//   //   tag: 'img',
+//   //   classList: ['five-days_icon'],
+//   //   attributes: [{prop: 'src', value: getCardsIcon(data)}, {prop: 'alt', value: 'weather-icon'}],
+//   // });
+
+//   const dayTemperatureItem = createCard({
+//     tag: 'p',
+//     classList: ['five-days_day-temperature'],
+//     textContent: `${Math.round(data.main.temp_max).toString()}°`,
+//   });
+
+//   const nightTemperatureItem = createCard({
+//     tag: 'p',
+//     classList: ['five-days_night-temperature'],
+//     textContent: `${Math.round(data.main.temp_min).toString()}°`,
+//   });
+
+//   const cardContainer = createCard({
+//     tag: 'div',
+//     classList: ['five-days'],
+//     children: [dateItem, dayItem, imageItem, dayTemperatureItem, nightTemperatureItem],
+//     childrenAction: 'append',
+//   });
+
+//   return cardContainer;
+// }
+
+function createFiveDaysWeatherCards(array) {
+    const description = array.description;
+    // console.log('AWAUT description', description)
+
+    const imageSrc = getCardsFiveDaysIcon(description);
+    // console.log('imageSrc', imageSrc)
+  
+    const dateItem = createCard({
+      tag: 'p',
+      classList: ['five-days_date'],
+      textContent: array.date,
+    });
+  
+    const imageItem = createCard({
+      tag: 'img',
+      classList: ['five-days_icon'],
+      attributes: [{prop: 'src', value: imageSrc}, {prop: 'alt', value: 'weather-icon'}],
+    });
+
+    const dayTemperatureItem = createCard({
+      tag: 'p',
+      classList: ['five-days_day-temperature'],
+      textContent: `${Math.round(array.max_temp).toString()}°`,
+    });
+  
+    const nightTemperatureItem = createCard({
+      tag: 'p',
+      classList: ['five-days_night-temperature'],
+      textContent: `${Math.round(array.min_temp).toString()}°`,
+    });
+  
+    const cardContainer = createCard({
+      tag: 'div',
+      classList: ['five-days'],
+      children: [dateItem, imageItem, dayTemperatureItem, nightTemperatureItem],
+      childrenAction: 'append',
+    });
+  
+    return cardContainer;
   }
-
-  const dateItem = createCard({
-    tag: 'p',
-    classList: ['five-days_date'],
-    textContent: data.dt_txt
-      .split(' ')[0]
-      .slice(8, 11),
-  });
-
-  const dayItem = createCard({
-    tag: 'p',
-    classList: ['five-days_day'],
-    textContent: getDay(data),
-  });
-
-  const imageItem = createCard({
-    tag: 'img',
-    classList: ['five-days_icon'],
-    attributes: [{prop: 'src', value: getCardsIcon(data)}, {prop: 'alt', value: 'weather-icon'}],
-  });
-
-  const dayTemperatureItem = createCard({
-    tag: 'p',
-    classList: ['five-days_day-temperature'],
-    textContent: `${Math.round(data.main.temp_max).toString()}°`,
-  });
-
-  const nightTemperatureItem = createCard({
-    tag: 'p',
-    classList: ['five-days_night-temperature'],
-    textContent: `${Math.round(data.main.temp_min).toString()}°`,
-  });
-
-  const cardContainer = createCard({
-    tag: 'div',
-    classList: ['five-days'],
-    children: [dateItem, dayItem, imageItem, dayTemperatureItem, nightTemperatureItem],
-    childrenAction: 'append',
-  });
-
-  return cardContainer;
-}
 
 // =============== Create search items ===============
 
@@ -166,14 +207,12 @@ function createSearchItems(cityName) {
   const closeButtonImage =createCard({
     tag: 'p',
     classList: ['item_close-button_icon'],
-    // attributes: [{prop: 'src', value: '/icons/close-button.png'}, {prop: 'alt', value: 'close-icon'}],
     textContent: '✖',
   });
 
   const closeButtonContainer = createCard({
     tag: 'button',
     classList: ['item_close-button'],
-    // textContent: '✖',
     attributes: [{prop: 'type', value: 'button'}],
     children: [closeButtonImage],
     childrenAction: 'append',

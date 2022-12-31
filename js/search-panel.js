@@ -5,7 +5,7 @@ let searchArray = JSON.parse(localStorage.getItem('cities'));
 searchArray.forEach(city => {
   const searchItem = createSearchItems(city);
   searchListElement.append(searchItem);
-  console.log('create + append', searchArray);
+  // console.log('create + append', searchArray);
 });
 
 // function addSearchItemsToPage() {
@@ -28,7 +28,7 @@ searchListElement.addEventListener('click', (event) => {
   }
 
   const cityName = searchCityElement.dataset.name;
-  console.log('searchCityElement', cityName);
+  // console.log('searchCityElement', cityName);
   searchCityElement.remove();
 
   const indexOfSityInArray = citiesArray.indexOf(cityName);
@@ -49,7 +49,7 @@ function toggleClearStorageButtonStatus() {
 // =============== HINT ABOUT SEARCH ERROR ===============
 
 function showMessage() {
-  console.log(messageElement);
+  // console.log(messageElement);
   messageElement.classList.remove('container-search__message--turn-opacity');
 }
 
@@ -59,14 +59,18 @@ function checkItem(inputValue) {
   // console.log('citiesArray', citiesArray);
 
   if(inputValue === '') {
-    showError();
+    showMessage();
     return;
+  }
+
+  if(!messageElement.classList.contains('container-search__message--turn-opacity')) {
+    console.log('MESSAGE');
   }
 
   if(citiesArray.length < 10 && !citiesArray.includes(`${inputValue}`)) {
     citiesArray.unshift(inputValue);
     setDataInStorage();
-    console.log('<5', citiesArray);
+    // console.log('<5', citiesArray);
 
     if (localStorage.getItem('cities')) {
       const searchItem = createSearchItems(inputValue);
@@ -74,7 +78,7 @@ function checkItem(inputValue) {
     }
 
   } else if (citiesArray.length >= 10 && !citiesArray.includes(`${inputValue}`)) {
-    console.log('HI', citiesArray, searchArray);
+    // console.log('HI', citiesArray, searchArray);
     citiesArray.pop();
     citiesArray.unshift(inputValue);
     setDataInStorage();
@@ -105,3 +109,9 @@ clearStorageButton.addEventListener('click', () => {
 
   toggleClearStorageButtonStatus();
 });
+
+function checkInvalidValue(inputValue, response) {
+  if(response.status !== 200) {
+    console.log('CHECK', inputValue);
+  }
+}
