@@ -15,6 +15,8 @@ searchListElement.addEventListener('click', (event) => {
   if (!event.target.classList.contains('item_close-button_icon')) {
     const cityName = searchCityElement.dataset.name;
     getData(cityName);
+    toggleTodayCards = true;
+    toggleClickStatus();
     return;
   }
 

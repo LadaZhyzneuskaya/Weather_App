@@ -32,6 +32,9 @@ formElement.addEventListener('submit', (event) => {
 
   checkItem(inputValue);
   toggleClearStorageButtonStatus();
+
+  toggleTodayCards = true;
+  toggleClickStatus();
   
   console.log('formElement', searchArray);
 

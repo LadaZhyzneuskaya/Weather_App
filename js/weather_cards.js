@@ -23,7 +23,7 @@ function addCardsToPage(data) {
 }
 
 function threeHoursWeatherCards(data) {
-  const newArray = [...threeHoursWeatherArray].splice(1, 9);
+  const newArray = [...threeHoursWeatherArray].splice(1, 8);
   const cardsThreeHours = newArray.map(createThreeHoursWeatherCards);
 
   replaceChildren(weatherContainer, cardsThreeHours);
