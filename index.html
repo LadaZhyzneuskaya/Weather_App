@@ -32,86 +32,89 @@
             <h2 class="main__title_location"></h2>
           </div>
 
-          <div class="main__weather">
-            <div class="main__weather_now">
-              <div class="main__weather_now_icon">
-                <img src="/icons/unknown.png" alt="weather" class="icon">
-              </div>
-  
-              <div class="main__weather_now_characteristic now">
-                <div class="now_temperature">
-                  <span class="now_temperature_number"></span><span class="now_temperature_units">&deg;</span>
-                </div>
-  
-                <div class="now_feels-like">
-                  <span class="now_feels-like_text">
-                    Feels like
-                  </span>
-  
-                  <span class="now_feels-like_number">20</span><span class="now_feels-like_units">&deg;</span>
-                </div>
-  
-                <div class="now_description">
-                  <p class="now_description_text">Mostly sunny</p>
-                </div>
-              </div>
-            </div>
-  
-            <div class="main__weather_now_other-characteristic weather-other">
-              <div class="weather-other_temperature weather-other--flex">
-                <div class="weather-other_temperature_high">
-                  <span class="weather-other_temperature_high_number weather-other--font-size">23</span><span class="weather-other_temperature_high_units weather-other--font-size">&deg;</span>
-                  
-                  <p class="weather-other_temperature_high_text">
-                    High
-                  </p>
-                </div>
-  
-                <div class="weather-other_temperature_low">
-                  <span class="weather-other_temperature_low_number weather-other--font-size">14</span><span class="weather-other_temperature_low_units weather-other--font-size">&deg;</span>
-
-                  <p class="weather-other_temperature_low_text">
-                    Low
-                  </p>
-                </div>
-              </div>
-  
-              <div class="weather-other_some-data weather-other--flex">
-                <div class="weather-other_some-data_wind wind">
-                  <span class="wind_number weather-other--font-size">1</span><span class="wind_units weather-other--font-size">mps</span>
-
-                  <p class="wind_text">
-                    Wind
-                  </p>
+          <div class="main__container">
+            <div class="main__weather">
+              <div class="main__weather_now">
+                <div class="main__weather_now_icon">
+                  <img src="/icons/unknown.png" alt="weather" class="icon">
                 </div>
     
-                <div class="weather-other_some-data_humidity humidity">
-                  <span class="humidity_number weather-other--font-size">50</span><span class="humidity_units weather-other--font-size">%</span>
-
-                  <p class="humidity_text">
-                    Humidity
-                  </p>
+                <div class="main__weather_now_characteristic now">
+                  <div class="now_temperature">
+                    <span class="now_temperature_number"></span><span class="now_temperature_units">&deg;</span>
+                  </div>
+    
+                  <div class="now_feels-like">
+                    <span class="now_feels-like_text">
+                      Feels like
+                    </span>
+    
+                    <span class="now_feels-like_number">20</span><span class="now_feels-like_units">&deg;</span>
+                  </div>
+    
+                  <div class="now_description">
+                    <p class="now_description_text">Mostly sunny</p>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="main__weather_now_other-characteristic weather-other">
+                <div class="weather-other_temperature weather-other--flex">
+                  <div class="weather-other_temperature_high">
+                    <span class="weather-other_temperature_high_number weather-other--font-size">23</span><span class="weather-other_temperature_high_units weather-other--font-size">&deg;</span>
+                    
+                    <p class="weather-other_temperature_high_text">
+                      High
+                    </p>
+                  </div>
+    
+                  <div class="weather-other_temperature_low">
+                    <span class="weather-other_temperature_low_number weather-other--font-size">14</span><span class="weather-other_temperature_low_units weather-other--font-size">&deg;</span>
+  
+                    <p class="weather-other_temperature_low_text">
+                      Low
+                    </p>
+                  </div>
+                </div>
+    
+                <div class="weather-other_some-data weather-other--flex">
+                  <div class="weather-other_some-data_wind wind">
+                    <span class="wind_number weather-other--font-size">1</span><span class="wind_units weather-other--font-size">mps</span>
+  
+                    <p class="wind_text">
+                      Wind
+                    </p>
+                  </div>
+      
+                  <div class="weather-other_some-data_humidity humidity">
+                    <span class="humidity_number weather-other--font-size">50</span><span class="humidity_units weather-other--font-size">%</span>
+  
+                    <p class="humidity_text">
+                      Humidity
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="main__weather_detailed">
+              <div class="main__weather_detailed_titles">
+                <button type="button" class="main__weather_detailed_titles_today buttons clicked-weather-button">
+                  Todays weather
+                </button>
+  
+                <button type="button" class="main__weather_detailed_titles_next-days buttons">
+                  Weather for five days
+                </button>
+              </div>
+  
+              <div class="main__weather_detailed_forecast">
+                <div class="main__weather_detailed_forecast_three-hours hourly">
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="main__weather_detailed">
-            <div class="main__weather_detailed_titles">
-              <button type="button" class="main__weather_detailed_titles_today">
-                Todays weather
-              </button>
-
-              <button type="button" class="main__weather_detailed_titles_next-days">
-                Next five days
-              </button>
-            </div>
-
-            <div class="main__weather_detailed_forecast">
-              <div class="main__weather_detailed_forecast_three-hours hourly">
-              </div>
-            </div>
-          </div>
         </main>
   
         <footer class="footer">
@@ -121,7 +124,7 @@
         </footer>
       </div>
 
-      <div class="container-search">
+      <div class="container-search cards-background">
         <div class="container-search__message container-search__message--turn-opacity">
           <p class="container-search__message_text">
             Please, enter a valid city name!
@@ -140,7 +143,7 @@
         <ul class="container-search__results-of-search">
         </ul>
 
-        <button type="button" class="container-search__clear-storage-button hidden">
+        <button type="button" class="container-search__clear-storage-button hidden buttons">
           Сlear the history
         </button>
       </div>

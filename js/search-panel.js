@@ -5,16 +5,7 @@ let searchArray = JSON.parse(localStorage.getItem('cities'));
 searchArray.forEach(city => {
   const searchItem = createSearchItems(city);
   searchListElement.append(searchItem);
-  // console.log('create + append', searchArray);
 });
-
-// function addSearchItemsToPage() {
-//   searchArray.forEach(city => {
-//     const searchItem = createSearchItems(city);
-//     searchListElement.append(searchItem);
-//     console.log('create + append', searchArray);
-// });
-// }
 
 // =============== LI ===============
 
@@ -28,7 +19,6 @@ searchListElement.addEventListener('click', (event) => {
   }
 
   const cityName = searchCityElement.dataset.name;
-  // console.log('searchCityElement', cityName);
   searchCityElement.remove();
 
   const indexOfSityInArray = citiesArray.indexOf(cityName);
@@ -49,15 +39,17 @@ function toggleClearStorageButtonStatus() {
 // =============== HINT ABOUT SEARCH ERROR ===============
 
 function showMessage() {
-  // console.log(messageElement);
   messageElement.classList.remove('container-search__message--turn-opacity');
+  console.log('citiesArray', citiesArray);
+
+  // удаляет эл-т в начале массива
+  citiesArray.shift();
+  console.log('citiesArray SHIFT', citiesArray);
 }
 
 // =============== STORAGE ===============
 
 function checkItem(inputValue) {
-  // console.log('citiesArray', citiesArray);
-
   if(inputValue === '') {
     showMessage();
     return;
@@ -70,7 +62,6 @@ function checkItem(inputValue) {
   if(citiesArray.length < 10 && !citiesArray.includes(`${inputValue}`)) {
     citiesArray.unshift(inputValue);
     setDataInStorage();
-    // console.log('<5', citiesArray);
 
     if (localStorage.getItem('cities')) {
       const searchItem = createSearchItems(inputValue);
@@ -78,7 +69,6 @@ function checkItem(inputValue) {
     }
 
   } else if (citiesArray.length >= 10 && !citiesArray.includes(`${inputValue}`)) {
-    // console.log('HI', citiesArray, searchArray);
     citiesArray.pop();
     citiesArray.unshift(inputValue);
     setDataInStorage();

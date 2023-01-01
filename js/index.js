@@ -24,11 +24,6 @@ toggleClearStorageButtonStatus();
 
 // ================ SEARCH ================
 
-// searchArray.forEach(city => {
-//   createSearchItems(city);
-//   console.log('only create')
-// });
-
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
 

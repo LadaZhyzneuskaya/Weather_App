@@ -26,14 +26,10 @@ const humidityElement = document.querySelector('.humidity_number');
 
 const todaysWeatherButtonElement = document.querySelector('.main__weather_detailed_titles_today');
 const fiveDaysWeatherButtonElement = document.querySelector('.main__weather_detailed_titles_next-days');
+// const fiveDaysCards = document.querySelector('main__weather_detailed_forecast_five-days');
 
 const weatherContainer = document.querySelector('.hourly');
-// const threeHoursWeatherIcon = document.querySelectorAll('.hourly_item_icon');
-
-// const fiveDaysWeatherContainer = document.querySelector('.main__weather_detailed_forecast_five-days');
-// const fiveDaysWeatherIcon = document.querySelectorAll('.five-days_icon');
-
-// console.log();
+console.log(fiveDaysCards);
 
 
 
@@ -95,7 +91,7 @@ function createThreeHoursWeatherCards(data) {
 
   const cardContainer = createCard({
     tag: 'div',
-    classList: ['hourly_item'],
+    classList: ['hourly_item', 'cards-background'],
     children: [timeItem, imageItem, temperatureItem],
     childrenAction: 'append',
   });
@@ -186,7 +182,7 @@ function createFiveDaysWeatherCards(fiveDaysArray) {
   
     const cardContainer = createCard({
       tag: 'div',
-      classList: ['five-days'],
+      classList: ['five-days', 'cards-background'],
       children: [dateItem, imageItem, dayTemperatureItem, nightTemperatureItem],
       childrenAction: 'append',
     });
