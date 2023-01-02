@@ -1,5 +1,5 @@
 const showApplication = () => {
-  getData();
+  // getData();
 }
 
 showApplication();
@@ -96,18 +96,55 @@ function getHumidity(data) {
 function getIcon(data, element) {
   switch (data.weather[0].main) {
     case 'Clear':
+      wrapperElement.classList.add('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
+
       return element.src = '/icons/day_clear.png';
     
     case 'Snow':
+      wrapperElement.classList.add('snow-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/snow.png';
 
     case 'Mist':
+      wrapperElement.classList.add('mist-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/mist.png';
 
     case 'Thunderstorm':
+      wrapperElement.classList.add('thunderstorm-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/thunderstorm.png';
 
     case 'Rain':
+      wrapperElement.classList.add('rain_theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
+
       if (data.weather[0].description === 'light rain') {
         return element.src = '/icons/light_rain.png';
       } else {
@@ -116,8 +153,22 @@ function getIcon(data, element) {
 
     case 'Clouds':
       if (data.weather[0].description === 'overcast clouds') {
+        wrapperElement.classList.add('overcast-cloud-theme');
+        wrapperElement.classList.remove('sun-theme');
+        wrapperElement.classList.remove('snow-theme');
+        wrapperElement.classList.remove('mist-theme');
+        wrapperElement.classList.remove('thunderstorm-theme');
+        wrapperElement.classList.remove('rain_theme');
+        wrapperElement.classList.remove('few-cloud-theme');
         return element.src = '/icons/overcast_clouds.png';
       } else {
+        wrapperElement.classList.add('few-cloud-theme');
+        wrapperElement.classList.remove('sun-theme');
+        wrapperElement.classList.remove('snow-theme');
+        wrapperElement.classList.remove('mist-theme');
+        wrapperElement.classList.remove('thunderstorm-theme');
+        wrapperElement.classList.remove('rain_theme');
+        wrapperElement.classList.remove('overcast-cloud-theme');
         return element.src = '/icons/day_few_clouds.png';
       }
 

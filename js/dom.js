@@ -1,3 +1,4 @@
+const wrapperElement = document.querySelector('.weather-application');
 const formElement = document.querySelector('form');
 const inputElement = document.querySelector('input');
 const buttonInputElement = document.querySelector('.container-search__form_button');
@@ -7,7 +8,7 @@ const messageElement = document.querySelector('.container-search__message');
 
 const clearStorageButton = document.querySelector('.container-search__clear-storage-button');
 
-// console.log(hintElement);
+// console.log(wrapperElement);
 
 const titleCityElement = document.querySelector('.main__title_location');
 const dayTodayElement = document.querySelector('.day');
@@ -29,7 +30,7 @@ const fiveDaysWeatherButtonElement = document.querySelector('.main__weather_deta
 // const fiveDaysCards = document.querySelector('main__weather_detailed_forecast_five-days');
 
 const weatherContainer = document.querySelector('.hourly');
-console.log(fiveDaysCards);
+// console.log(fiveDaysCards);
 
 
 
