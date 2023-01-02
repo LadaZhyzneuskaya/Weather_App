@@ -8,20 +8,6 @@ let descriptionOfDay;
 let dataArrayFiveDaysWeather = [];
 let toggleTodayCards = true;
 
-function addCardsToPage(data) {
-  threeHoursWeatherCards(data);
-
-  todaysWeatherButtonElement.addEventListener('click', () => {
-    threeHoursWeatherCards();
-    toggleClickStatus();
-  });
-  
-  fiveDaysWeatherButtonElement.addEventListener('click', () => {
-    filteredData(data);
-    toggleClickStatus();
-  });
-}
-
 function threeHoursWeatherCards(data) {
   const newArray = [...threeHoursWeatherArray].splice(1, 8);
   const cardsThreeHours = newArray.map(createThreeHoursWeatherCards);
@@ -36,7 +22,6 @@ function replaceChildren(parent, children) {
 
 // =============== ARRAYS FOR FIVE DAYS CARDS ===============
 
-// data === data.list!!! 
 function filteredData(data) {
   const twentyFourHours  = 24 * 60 * 60 * 1000;
   const todayDate = new Date().getTime();
@@ -89,6 +74,7 @@ function filteredData(data) {
           .slice(8));
       });
     }
+
     transformFiveDaysTemperatureArray();
 
     function sortWeatherDescriptions(descriptionArray) {
@@ -109,10 +95,12 @@ function filteredData(data) {
 
     const objectDataOneDaysWeather = {
       date: datesArray[0],
-      weather: [{
+      weather: [
+        {
         main: sortWeatherDescriptions(weatherMainDescription),
         description: sortWeatherDescriptions(weatherDescription),
-      }],
+        }
+      ],
       max_temp: fiveDaysGeneralTemperature[fiveDaysGeneralTemperature.length - 1],
       min_temp: fiveDaysGeneralTemperature[0],
     }
@@ -120,18 +108,15 @@ function filteredData(data) {
     dataArrayFiveDaysWeather.push(objectDataOneDaysWeather);
     fiveDaysWeatherCards(dataArrayFiveDaysWeather);
   }
-
-  console.log('dataArrayFiveDaysWeather', dataArrayFiveDaysWeather[3]);
   
   fiveDaysWeatherCards(dataArrayFiveDaysWeather);
 }
 
 function fiveDaysWeatherCards(transformedDataArray) {
-  console.log('item', transformedDataArray);
   const cardsFiveDays = transformedDataArray.map((item) => {
     return createFiveDaysWeatherCards(item);
   });
-  console.log('cardsFiveDays', cardsFiveDays);
+
   replaceChildren(weatherContainer, cardsFiveDays);
   toggleTodayCards = false;
 }

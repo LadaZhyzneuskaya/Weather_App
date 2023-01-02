@@ -8,8 +8,6 @@ const messageElement = document.querySelector('.container-search__message');
 
 const clearStorageButton = document.querySelector('.container-search__clear-storage-button');
 
-// console.log(wrapperElement);
-
 const titleCityElement = document.querySelector('.main__title_location');
 const dayTodayElement = document.querySelector('.day');
 const dateTodayElement = document.querySelector('.date');
@@ -25,14 +23,9 @@ const lowTemperatureElement = document.querySelector('.weather-other_temperature
 const windElement = document.querySelector('.wind_number');
 const humidityElement = document.querySelector('.humidity_number');
 
+const weatherContainer = document.querySelector('.hourly');
 const todaysWeatherButtonElement = document.querySelector('.main__weather_detailed_titles_today');
 const fiveDaysWeatherButtonElement = document.querySelector('.main__weather_detailed_titles_next-days');
-// const fiveDaysCards = document.querySelector('main__weather_detailed_forecast_five-days');
-
-const weatherContainer = document.querySelector('.hourly');
-// console.log(fiveDaysCards);
-
-
 
 function createCard({
   tag,
@@ -43,7 +36,6 @@ function createCard({
   childrenAction,
 }) {
   const element = document.createElement(tag);
-  // console.log(element)
 
   if (classList?.length) {
     element.classList.add(...classList);
@@ -68,7 +60,7 @@ function createCard({
 
 // =============== Create three hours weather cards ===============
 
-// data = data.list!!!
+// data = data.list
 function createThreeHoursWeatherCards(data) {
   const timeItem = createCard({
     tag: 'p',
@@ -100,11 +92,10 @@ function createThreeHoursWeatherCards(data) {
   return cardContainer;
 };
 
-function createFiveDaysWeatherCards(fiveDaysArray) {
-    console.log('AWAUT description', fiveDaysArray)
+// =============== Create five days weather cards ===============
 
+function createFiveDaysWeatherCards(fiveDaysArray) {
     const imageSrc = getCardsIcon(fiveDaysArray);
-    console.log('imageSrc', imageSrc)
   
     const dateItem = createCard({
       tag: 'p',

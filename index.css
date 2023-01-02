@@ -45,6 +45,12 @@
   font-size: 19px;
 }
 
+@media screen and (max-width: 960px) {
+  .weather-application {
+    font-size: 17px;
+  }
+}
+
 .snow-theme {
   background-image: url(/images/snow-forest_light.jpg);
   background-size: cover;
@@ -78,12 +84,6 @@
 .thunderstorm-theme {
   background-image: url(/images/thunderstorm-light.jpg);
   background-size: cover;
-}
-
-@media screen and (max-width: 960px) {
-  .weather-application {
-    font-size: 17px;
-  }
 }
 
 .container-general {

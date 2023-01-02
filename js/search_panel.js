@@ -7,8 +7,6 @@ searchArray.forEach(city => {
   searchListElement.append(searchItem);
 });
 
-// =============== LI ===============
-
 searchListElement.addEventListener('click', (event) => {
   const searchCityElement = event.target.closest('li');
 
@@ -30,6 +28,17 @@ searchListElement.addEventListener('click', (event) => {
   toggleClearStorageButtonStatus();
 });
 
+clearStorageButton.addEventListener('click', () => {
+  localStorage.clear();
+  citiesArray = [];
+
+  while (searchListElement.firstChild) {
+    searchListElement.removeChild(searchListElement.firstChild);
+  };
+
+  toggleClearStorageButtonStatus();
+});
+
 function toggleClearStorageButtonStatus() {
   if (searchListElement.children.length > 0) {
     clearStorageButton.classList.remove('hidden');
@@ -38,27 +47,10 @@ function toggleClearStorageButtonStatus() {
   }
 }
 
-// =============== HINT ABOUT SEARCH ERROR ===============
-
-function showMessage() {
-  messageElement.classList.remove('container-search__message--turn-opacity');
-  console.log('citiesArray', citiesArray);
-
-  // удаляет эл-т в начале массива
-  citiesArray.shift();
-  console.log('citiesArray SHIFT', citiesArray);
-}
-
-// =============== STORAGE ===============
-
 function checkItem(inputValue) {
   if(inputValue === '') {
     showMessage();
     return;
-  }
-
-  if(!messageElement.classList.contains('container-search__message--turn-opacity')) {
-    console.log('MESSAGE');
   }
 
   if(citiesArray.length < 10 && !citiesArray.includes(`${inputValue}`)) {
@@ -79,10 +71,7 @@ function checkItem(inputValue) {
     const searchListChildren = searchArray.map(createSearchItems);
     replaceChildren(searchListElement, searchListChildren);
     
-    console.log('DONT', citiesArray, searchArray);
-    
   } else {
-    console.log('You shall not pass, Povtoriashka!!! :)');
     return;
   }
 }
@@ -91,19 +80,7 @@ function setDataInStorage() {
   localStorage.setItem('cities', JSON.stringify(citiesArray));
 }
 
-clearStorageButton.addEventListener('click', () => {
-  localStorage.clear();
-  citiesArray = [];
-
-  while (searchListElement.firstChild) {
-    searchListElement.removeChild(searchListElement.firstChild);
-  };
-
-  toggleClearStorageButtonStatus();
-});
-
-function checkInvalidValue(inputValue, response) {
-  if(response.status !== 200) {
-    console.log('CHECK', inputValue);
-  }
+function showMessage() {
+  messageElement.classList.remove('container-search__message--turn-opacity');
+  citiesArray.shift();
 }

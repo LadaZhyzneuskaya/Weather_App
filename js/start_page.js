@@ -1,40 +1,15 @@
-const threeHoursArray = [];
-
 const showMainPageWeather = (data) => {
+  threeHoursWeatherArray = data.list;
+  fiveDaysWeatherArray = data.list;
+  
   addElementsToPage(data);
 
-  const dataList = data.list;
-  console.log('MAIN_PAGE', dataList);
-
-  // for (let item of dataList) {
-  //   const weatherThreeHoursCard = createThreeHoursWeatherCards(item);
-  //   threeHoursWeatherContainer.append(weatherThreeHoursCard);
-  // }
-
-
-  // WORKING CODE!!!
-
-  for (let i = 1; i < dataList.length - 30; i++) {
-    const weatherThreeHoursCard = createThreeHoursWeatherCards(dataList[i]);
-    threeHoursWeatherContainer.append(weatherThreeHoursCard);
-    // console.log(dataList[i]);
-  }
-
-  // for (let item of dataList) {
-  //   const weatherFiveDaysCard = createFiveDaysWeatherCards(item);
-  //   fiveDaysWeatherContainer.append(weatherFiveDaysCard);
-  // }
-
-  // FIVE(data);
+  addCardsToPage(data);
 }
 
 function getTime() {
   setInterval(() => {
     const date = new Date();
-    // const UTC_TIME = date.getUTCHours();
-
-    // const hours = UTC_TIME - Number(`${dataTime}`);
-    // console.log(hours);
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
@@ -55,13 +30,6 @@ function getTime() {
       timeElement.textContent = `${hours}:${minutes}:${seconds}`;
     };
   }, 500);
-
-  // const date = new Date();
-  // const UTC_TIME = date.getUTCHours();
-  // const cityTime = UTC_TIME
-  // // CITYTIME.toISOString();
-  // console.log(UTC_TIME);
-  // timeElement.textContent = `0${hours}:${minutes}:${seconds}`;
 }
 
 function getDateToday() {
@@ -69,8 +37,22 @@ function getDateToday() {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const formattedDate = `${day}.${month + 1}.${year}`;
-  dateTodayElement.textContent = formattedDate;
+
+  if (day < 10) {
+    dateTodayElement.textContent = `0${day}.${month + 1}.${year}`;
+  };
+
+  if (month < 9) {
+    dateTodayElement.textContent = `${day}.0${month + 1}.${year}`;
+  };
+
+  if (day < 10 && month < 9) {
+    fullDayDate = `0${day}.0${month + 1}.${year}`;
+  };
+
+  if (day >= 10 && month >= 10) {
+    dateTodayElement.textContent = `${day}.${month + 1}.${year}`;
+  };
 }
 
 function getDayToday() {
@@ -107,7 +89,6 @@ function getDayToday() {
       break;
   }
 }
-
 
 function getLocation(data) {
   const location = data.city.name;
@@ -160,26 +141,58 @@ function getHumidity(data) {
   humidityElement.textContent = humidity;
 }
 
-// element = weatherIconNowElement
 function getIcon(data, element) {
-  // console.log(data.list[i].weather[0].main);
-  // console.log(data.list[i].weather[0].description);
-
   switch (data.weather[0].main) {
     case 'Clear':
-      return element.src = '/icons/day_clear.png';
+      wrapperElement.classList.add('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
 
+      return element.src = '/icons/day_clear.png';
     
     case 'Snow':
+      wrapperElement.classList.add('snow-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/snow.png';
 
     case 'Mist':
+      wrapperElement.classList.add('mist-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/mist.png';
 
     case 'Thunderstorm':
+      wrapperElement.classList.add('thunderstorm-theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('rain_theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
       return element.src = '/icons/thunderstorm.png';
 
     case 'Rain':
+      wrapperElement.classList.add('rain_theme');
+      wrapperElement.classList.remove('sun-theme');
+      wrapperElement.classList.remove('snow-theme');
+      wrapperElement.classList.remove('mist-theme');
+      wrapperElement.classList.remove('thunderstorm-theme');
+      wrapperElement.classList.remove('overcast-cloud-theme');
+      wrapperElement.classList.remove('few-cloud-theme');
+
       if (data.weather[0].description === 'light rain') {
         return element.src = '/icons/light_rain.png';
       } else {
@@ -188,13 +201,59 @@ function getIcon(data, element) {
 
     case 'Clouds':
       if (data.weather[0].description === 'overcast clouds') {
+        wrapperElement.classList.add('overcast-cloud-theme');
+        wrapperElement.classList.remove('sun-theme');
+        wrapperElement.classList.remove('snow-theme');
+        wrapperElement.classList.remove('mist-theme');
+        wrapperElement.classList.remove('thunderstorm-theme');
+        wrapperElement.classList.remove('rain_theme');
+        wrapperElement.classList.remove('few-cloud-theme');
         return element.src = '/icons/overcast_clouds.png';
       } else {
-        console.log('HI!!!', element.src = '/icons/day_few_clouds.png')
+        wrapperElement.classList.add('few-cloud-theme');
+        wrapperElement.classList.remove('sun-theme');
+        wrapperElement.classList.remove('snow-theme');
+        wrapperElement.classList.remove('mist-theme');
+        wrapperElement.classList.remove('thunderstorm-theme');
+        wrapperElement.classList.remove('rain_theme');
+        wrapperElement.classList.remove('overcast-cloud-theme');
         return element.src = '/icons/day_few_clouds.png';
       }
 
     default:
       element.src = '/icons/unknown.png';
   }
-} 
+}
+
+function getCardsIcon(data) {
+  switch (data.weather[0].main) {
+    case 'Clear':
+      return '/icons/day_clear.png';
+
+    case 'Snow':
+      return '/icons/snow.png';
+
+    case 'Mist':
+      return '/icons/mist.png';
+
+    case 'Thunderstorm':
+      return '/icons/thunderstorm.png';
+
+    case 'Rain':
+      if (data.weather[0].description === 'light rain') {
+        return '/icons/light_rain.png';
+      } else {
+        return '/icons/moderate_rain.png';
+      }
+
+    case 'Clouds':
+      if (data.weather[0].description === 'overcast clouds') {
+        return '/icons/overcast_clouds.png';
+      } else {
+        return '/icons/day_few_clouds.png';
+      }
+
+    default:
+      '/icons/unknown.png';
+  }
+}
