@@ -156,36 +156,36 @@ function getHumidity(data) {
 }
 
 // element = weatherIconNowElement
-function getIcon(data, element) {
-  switch (data.weather[0].main) {
-    case 'Clear':
-      return element.src = '/icons/day_clear.png';
+// function getIcon(data, element) {
+//   switch (data.weather[0].main) {
+//     case 'Clear':
+//       return element.src = '/icons/day_clear.png';
 
-    case 'Snow':
-      return element.src = '/icons/snow.png';
+//     case 'Snow':
+//       return element.src = '/icons/snow.png';
 
-    case 'Mist':
-      return element.src = '/icons/mist.png';
+//     case 'Mist':
+//       return element.src = '/icons/mist.png';
 
-    case 'Thunderstorm':
-      return element.src = '/icons/thunderstorm.png';
+//     case 'Thunderstorm':
+//       return element.src = '/icons/thunderstorm.png';
 
-    case 'Rain':
-      if (data.weather[0].description === 'light rain') {
-        return element.src = '/icons/light_rain.png';
-      } else {
-        return element.src = '/icons/moderate_rain.png';
-      }
+//     case 'Rain':
+//       if (data.weather[0].description === 'light rain') {
+//         return element.src = '/icons/light_rain.png';
+//       } else {
+//         return element.src = '/icons/moderate_rain.png';
+//       }
 
-    case 'Clouds':
-      if (data.weather[0].description === 'overcast clouds') {
-        return element.src = '/icons/overcast_clouds.png';
-      } else {
-        console.log('HI!!!', element.src = '/icons/day_few_clouds.png')
-        return element.src = '/icons/day_few_clouds.png';
-      }
+//     case 'Clouds':
+//       if (data.weather[0].description === 'overcast clouds') {
+//         return element.src = '/icons/overcast_clouds.png';
+//       } else {
+//         console.log('HI!!!', element.src = '/icons/day_few_clouds.png')
+//         return element.src = '/icons/day_few_clouds.png';
+//       }
 
-    default:
-      element.src = '/icons/unknown.png';
-  }
-}
+//     default:
+//       element.src = '/icons/unknown.png';
+//   }
+// }
