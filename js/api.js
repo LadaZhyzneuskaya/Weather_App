@@ -1,6 +1,6 @@
 async function getData(inputValue = 'Minsk') {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid={API-key}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputValue}&units=metric&appid={API-key}`);  // API-key
 
     const data = await response.json();
     // console.log('DATA', data);
