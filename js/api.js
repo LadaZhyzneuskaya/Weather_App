@@ -15,7 +15,6 @@ async function getData(inputValue = 'Minsk') {
   } catch (error) {
     console.log(error);
 
-    // showMessage();
     return;
   }
 }
