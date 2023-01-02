@@ -3,6 +3,7 @@ setDataInStorage();
 let searchArray = JSON.parse(localStorage.getItem('cities'));
 
 searchArray.forEach(city => {
+  console.log('searchArray', searchArray);
   const searchItem = createSearchItems(city);
   searchListElement.append(searchItem);
 });
